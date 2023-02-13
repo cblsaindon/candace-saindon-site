@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">-->
+  <!--Custom color pallette: https://mycolor.space/?hex=%23EBB4C1&sub=1
+  https://www.vecteezy.com/vector-art/1984277-seamless-floral-background-with-cherry-blossoms-in-full-bloom-on-a-pink-background-horizontally-repeatable
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale = 1.0, user-scalable=no">
+  <title>Jump to Japan</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="css/slider.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css">
+  <!--<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+  <style>
+  html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+  </style>
+</head>
+
+
+<body class="light-theme" id="body" onload="init()">
+  <!--The Settings & Accessibility Modal-->
+  <div id="settingsModal" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container w3-center bodyContainer">
+        <span onclick="document.getElementById('settingsModal').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+
+          <h4>Settings and Accessibility</h4>
+
+        <!--Speed Slider-->
+        <p>Speed:</p>
+        <div class="speedContainer w3-padding-large">
+          <input type="range" min="1" max="6" value="3" class="speedSlider" id="speedSlider" onchange=changePlatformSpeed()>
+        </div>
+
+        <!-- Dark/light mode toggle -->
+        <p>Dark Mode:</p>
+        <div class="w3-padding-large">
+          <label class="switch">
+            <input type="checkbox" onchange=toggleTheme()>
+            <span class="slider round"></span>
+          </label>
+        </div>  
+
+        <h4>Stats</h4>
+        Name: <input type="text" id="usrname" value="Anonymous Panda"><br><br> <!--PANDA IS TEST, MONGOOSE IS PRODUCTION-->
+        <b>Word count: </b>
+        <label id="levelLabel">0</label><br>
+        <b>Score: </b>
+        <label id="scoreLabel">0</label><br>
+        <button class="w3-button w3-round" onclick=reset()>Reset Character</button>
+        
+      </div>
+    </div>
+  </div>
+
+  <!--The Help Modal-->
+  <div id="helpModal" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container w3-center bodyContainer">
+        <span onclick="document.getElementById('helpModal').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+
+          <h4>Controls</h4>
+          Use the left, right, and up arrow keys to move
+          <h4>How to Play</h4>
+
+          1) Jump on or under the words to fill the progress bar<br>
+          2) When the progress bar is filled, click the bottom button and fly to the next page<br>
+          3) Collect enough pages to fill a book<br>
+          4) Complete each book to win!<br><br>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Large Navbar -->
+  <div class="w3-top">
+    <div id="barlight" class="w3-bar w3-left-align w3-theme-d1">
+      <a href="#" id="bardark" class="w3-bar-item w3-button w3-padding-small w3-theme-d4"><i class="fa fa-map-signs w3-margin-right"></i>Jump to Japan</a>
+
+      <!--Book Dropdown-->
+      <div class="w3-dropdown-hover">
+        <button class="w3-button w3-padding-small w3-large" title="Books" id="bookMenuButton"><i class="fa fa-book"></i>
+          <span id ="remainingBooks" class="w3-badge w3-right w3-small w3-green">3</span></button>     
+        <div class="w3-dropdown-content w3-card-4 w3-bar-block bodyContainer" id="bookDropdown" style="width:300px">
+          <a href="#" class="w3-bar-item w3-button bookMenuItem" id="Essentials">Essentials</a>
+          <a href="#" class="w3-bar-item w3-button bookMenuItem" id="Travel">Travel</a>
+          <a href="#" class="w3-bar-item w3-button bookMenuItem" id="Nature">Nature</a>
+        </div>
+      </div>
+
+      <!-- Help Button -->
+      <button title="Help" onclick="document.getElementById('helpModal').style.display='block'"
+      class="w3-button w3-padding-small w3-right w3-large"><i class="fa fa-question"></i></button>
+
+      <!-- Settings & Accessibility Button -->
+      <button title="Settings" onclick="document.getElementById('settingsModal').style.display='block'"
+      class="w3-button w3-padding-small w3-right w3-large"><i class="fa fa-cog"></i></button>
+     
+    </div>
+  </div> 
+
+  <!-- Page Container -->
+  <div id ="pageContainer" class="w3-content w3-padding-30" style="max-width:1400px;padding-top:35px">   
+
+    <!-- 1. Game Information Container -->
+    <div id ="GameScreenContainer" class="w3-container w3-card w3-round w3-margin bodyContainer"><br>
+
+      <!--Score-->
+      <div id="scorebook">
+
+        <b>Book:</b>
+        <label id="bookLabel">Essentials</label><br>
+        <label id="pageLabel" class="font-awesome"></label>
+
+      </div>
+
+
+            
+      <!--Progress Bar-->
+      <div class="">
+        <div id="myBar" class="w3-container w3-blue w3-round" style="width:0%">0%</div>
+      </div>
+
+      <hr class="w3-clear">
+      
+    </div>
+
+      <!--Pop up when book is selected-->
+      <div class="popup">
+        <span class="popuptext" id="myPopup"></span>
+      </div>
+
+    <!-- 2. Game Container-->
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+        <div class="w3-container w3-card w3-round w3-padding bodyContainer" id="game-container">
+          <svg id="SVG_scene" fill="red" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg> 
+       
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Start Powerup Container -->
+    <div class="w3-container w3-card w3-round w3-margin bodyContainer"><br>
+      <!--Powerup Button-->
+      <button class="w3-button powerupButton disabled w3-round" id="powerupButton">Reading...</button>
+      <label id="historyLabel" class="w3-small"></label>
+      <br><br>
+    </div>
+
+  </div>
+
+  <!--Script References-->
+  <script src="js/main.js"></script>
+  <script src="js/level.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/controll.js"></script>
+  <script src="js/requestAnimationFrame.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/powerup.js"></script>
+  <script src="js/progressBar.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/page.js"></script>
+  <script src="js/score.js"></script>
+  <script src="js/platform.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
+  <script src="FAUNADB/index.js"></script>
+  <script type="text/javascript"></script>
+
+  </script>
+  <noscript>You need to enable JavaScript to view the full site.</noscript>
+</body>
+</html>

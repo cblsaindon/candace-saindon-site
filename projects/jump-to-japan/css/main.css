@@ -1,0 +1,159 @@
+:root {
+    --orange: #db831f;
+    --gold: #FCC201;
+    --white: #ffffff;
+    --black: #000000;
+    --lightcolorone: hsl(220, 67%, 92%);
+    /*--lightcolorone: #ffffff;*/
+    --darkcolorone: #4e4e4e;
+    --darkcolortwo: #264868;
+    --darkgrey: #121212;
+    --mediumcolortwo:#5ea8ed;
+    --darkgreen: #264868;
+}
+
+
+#bardark {
+
+font-family:Georgia, 'Times New Roman', Times, serif;
+font-size: medium;
+} 
+
+#barlight {
+  font-family:'Tangerine', Georgia, 'Times New Roman', Times, serif;
+  
+}
+
+.light-theme {
+  --bg: var(--lightcolorone);
+  --fontColor: var(--black);
+  --btnBg: var(--black);
+  --btnBgEnabled: var(--gold);
+  --btnBgDisabled: var(--lightcolorone);
+  --btnFontColor: var(--white);
+  --containerColor: var(--white);
+  --gameColor: #a2caff;
+
+
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.dark-theme {
+  --bg: var(--darkgrey);
+  --fontColor: var(--white);
+  --btnBg: var(--white);
+  --btnBgEnabled: var(--gold);
+  --btnBgDisabled: var(--black);
+  --btnFontColor: var(--black);
+  --containerColor: var(--black);
+  --gameColor: var(--darkcolortwo);
+}
+
+.powerupButton.disabled {
+  background-color: var(--btnBgDisabled) !important;
+  pointer-events:none;
+}
+
+.powerupButton.enabled {
+  background-color: #f2ca45 !important;
+  background-color: var(--btnBgEnabled) !important;
+}
+
+.btn {
+  position: absolute;
+  top: 20px;
+  left: 250px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  color: var(--btnFontColor);
+  background-color: var(--btnBg);
+  
+}
+
+html, body {
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width:100%;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;   
+  background: var(--bg);
+  color: var(--fontColor);
+  /*font-family: helvetica;*/
+
+  overflow: hidden;
+}
+
+.bodyContainer {
+  background-color: var(--containerColor);
+}
+
+
+#SVG_scene
+{
+  min-width:100%;
+  min-height:100%;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#scoreLabel {
+  stroke-width: 5px !important;
+  stroke: #000000 !important;
+}
+
+/* If the screen size is 600px wide or less, hide the element */
+@media only screen and (max-height: 600px) {
+  #GameScreenContainer {
+    display: none;
+  }
+}
+
+@media (min-height: 500px) {
+  
+  #SVG_scene
+  {
+  min-height:300px;
+
+  }
+}
+
+.confettiContainer { text-align: center; }
+
+.completeBookMenuItem {
+  background-color:#4ec766 !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+  #pageContainer {
+    padding-top: 100px;
+  }
+}
+
+.font-awesome {
+  font-family: FontAwesome;
+  color: #a11483;
+}

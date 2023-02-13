@@ -1,0 +1,89 @@
+/* Set a white background and custom font for the page */
+body {
+    background-color: #fff;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1.logo {
+    text-align: left;
+}
+
+/* Style the navigation links */
+nav a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 1rem 2rem;
+}
+
+nav a:hover {
+    background-color: #333;
+}
+
+/* Add a white border to the logo */
+.logo {
+    padding: 2rem;
+    text-align: center;
+    border: 0.5rem solid #fff;
+}
+
+/* Add a shadow to images on hover */
+.w3-image:hover {
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.5);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Style the section titles */
+.section-title {
+
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+/* Style the project list */
+.project-list {
+    margin-top: 1rem;
+}
+
+.project-link {
+    display: block;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 0.3rem solid #fff;
+}
+
+.project-link:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #333;
+}
+
+.project-image {
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Style the footer */
+footer {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 1rem;
+}
+
+
