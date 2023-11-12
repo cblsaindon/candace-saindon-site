@@ -1,6 +1,6 @@
 /////////////////////PROGRESS BAR///////////////////////
 var powerupReady = false;
-var powerupRate = 100; //HOW FAST THE POWERUP BAR FILLS
+var powerupRate = 20; //HOW FAST THE POWERUP BAR FILLS
 var pageFlag = true;
 var tempDollars = 0;
 var barElem = document.getElementById("myBar");
