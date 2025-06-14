@@ -9,22 +9,43 @@ var maxActivePlatforms = 1; //MAX PLATFORMS ON THE SCREEN
 
 const booksData = {
   Essentials: [
-    ["りんご", "apple"],
-    ["みず", "water"],
-    ["でんわ", "phone"],
-    // ... add the rest
+    ["ringo", "apple"],
+    ["mizu", "water"],
+    ["denwa", "phone"],
+    ["pan", "bread"],
+    ["kutsu", "shoes"],
+    ["うち", "house"],
+    ["ひと", "person"],
+    ["かばん", "bag"],
+    ["ねこ", "cat"],
+    ["いぬ", "dog"]
   ],
   Travel: [
-    ["ひこうき", "airplane"],
-    ["ホテル", "hotel"],
-    // ...
+    ["hikouki", "airplane"],
+    ["hoteru", "hotel"],
+    ["densha", "train"],
+    ["kuukou", "airport"],
+    ["pasupooto", "passport"],
+    ["ちず", "map"],
+    ["たくしー", "taxi"],
+    ["ばす", "bus"],
+    ["りょこう", "travel"],
+    ["がいこくご", "foreign language"]
   ],
   Nature: [
-    ["き", "tree"],
-    ["かわ", "river"],
-    // ...
+    ["ki", "tree"],
+    ["kawa", "river"],
+    ["yama", "mountain"],
+    ["hana", "flower"],
+    ["sora", "sky"],
+    ["うみ", "sea"],
+    ["もり", "forest"],
+    ["たいよう", "sun"],
+    ["つき", "moon"],
+    ["かぜ", "wind"]
   ]
 };
+
 
 function translatePlatform() //TOGGLES THE WORD TO JAPANESE OR ENGLISH
 {
